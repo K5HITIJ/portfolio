@@ -1,0 +1,90 @@
+title: Mishrak - Portfolio
+email: mishrak@example.com
+description: >-
+  Professional portfolio showcasing projects, skills, and experience.
+  Full Stack Developer & Cloud Enthusiast.
+baseurl: ""
+url: "https://yourusername.github.io"
+
+# Social links
+github_username: yourusername
+linkedin_username: yourusername
+twitter_username: yourusername
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# SEO settings
+lang: en_US
+logo: /assets/images/logo.png
+twitter:
+  username: yourusername
+  card: summary_large_image
+facebook:
+  app_id: 
+  publisher: 
+  admins: 
+
+author:
+  name: Mishrak
+  email: mishrak@example.com
+  twitter: yourusername
+
+# Google Analytics
+google_analytics: 
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - package.json
+  - package-lock.json
+  - webpack.config.js
+  - .gitignore
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:name/
+  blog:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Mishrak"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/default-og-image.png
+
+# Sass settings
+sass:
+  style: compressed
+
+# Pagination
+paginate: 6
+paginate_path: "/blog/page:num/"

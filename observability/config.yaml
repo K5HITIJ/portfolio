@@ -1,0 +1,95 @@
+# Observability and Monitoring Configuration
+
+## Logging Configuration
+log_level: info
+log_format: json
+
+## Metrics Collection
+metrics:
+  enabled: true
+  port: 9090
+  path: /metrics
+  
+  # Application metrics
+  application:
+    - name: http_requests_total
+      help: Total number of HTTP requests
+      type: counter
+      labels: [method, endpoint, status_code]
+    
+    - name: http_request_duration_seconds
+      help: HTTP request duration in seconds
+      type: histogram
+      labels: [method, endpoint]
+      buckets: [0.1, 0.5, 1.0, 2.5, 5.0, 10.0]
+    
+    - name: active_connections
+      help: Number of active connections
+      type: gauge
+    
+    - name: page_views_total
+      help: Total number of page views
+      type: counter
+      labels: [page]
+
+## Tracing Configuration
+tracing:
+  enabled: true
+  service_name: portfolio-frontend
+  service_version: 1.0.0
+  environment: production
+  
+  # Jaeger configuration
+  jaeger:
+    endpoint: http://jaeger-collector:14268/api/traces
+    sampler_type: probabilistic
+    sampler_param: 0.1
+
+## Health Checks
+health_checks:
+  enabled: true
+  endpoint: /health
+  checks:
+    - name: database
+      timeout: 5s
+    - name: external_api
+      timeout: 10s
+    - name: storage
+      timeout: 3s
+
+## Error Tracking
+error_tracking:
+  enabled: true
+  service: sentry
+  dsn: ${SENTRY_DSN}
+  environment: production
+  release: ${APP_VERSION}
+
+## Performance Monitoring
+performance:
+  enabled: true
+  core_web_vitals: true
+  real_user_monitoring: true
+  synthetic_monitoring:
+    enabled: true
+    frequency: 5m
+    locations: [us-east-1, eu-west-1, ap-southeast-1]
+
+## Alerting Rules
+alerting:
+  enabled: true
+  rules:
+    - name: HighErrorRate
+      condition: error_rate > 0.05
+      duration: 5m
+      severity: warning
+      
+    - name: HighLatency
+      condition: p95_latency > 2s
+      duration: 5m
+      severity: warning
+      
+    - name: ServiceDown
+      condition: up == 0
+      duration: 1m
+      severity: critical
