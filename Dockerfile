@@ -23,14 +23,10 @@ FROM nginx:alpine AS production
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy built application from builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Copy additional static files
-COPY --from=builder /app/index.html /usr/share/nginx/html/
-COPY --from=builder /app/assets /usr/share/nginx/html/assets/
+COPY --from=builder /app/dist/ /usr/share/nginx/html/
 
 # Add labels for better container management
-LABEL maintainer="mishrak@example.com"
+LABEL maintainer="mishrak.dev@gmail.com"
 LABEL version="1.0.0"
 LABEL description="Cloud-native portfolio website"
 
