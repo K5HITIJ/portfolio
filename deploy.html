@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy Instructions</title>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; }
+        .step { background: #f0f9ff; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 4px solid #0ea5e9; }
+        .command { background: #1e293b; color: #e2e8f0; padding: 15px; border-radius: 6px; font-family: monospace; overflow-x: auto; margin: 10px 0; }
+        .success { color: #059669; font-weight: bold; }
+        .url { background: #dcfce7; padding: 10px; border-radius: 6px; margin: 10px 0; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>🚀 Deploy Your Portfolio in 3 Steps</h1>
+    
+    <div class="step">
+        <h2>Step 1: Create GitHub Repository</h2>
+        <p>Go to <a href="https://github.com/new" target="_blank">github.com/new</a></p>
+        <ul>
+            <li>Repository name: <code>portfolio</code> or <code>your-username.github.io</code></li>
+            <li>Make it Public</li>
+            <li>Don't initialize with README (we already have files)</li>
+            <li>Click "Create repository"</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h2>Step 2: Push Your Code</h2>
+        <p>Run these commands in your terminal:</p>
+        <div class="command">git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git<br>git push -u origin main</div>
+        <p><strong>Replace YOUR-USERNAME and YOUR-REPO-NAME with your actual GitHub username and repository name.</strong></p>
+    </div>
+
+    <div class="step">
+        <h2>Step 3: Enable GitHub Pages</h2>
+        <ul>
+            <li>Go to your repository on GitHub</li>
+            <li>Click <strong>Settings</strong> → <strong>Pages</strong></li>
+            <li>Source: Select <strong>GitHub Actions</strong></li>
+            <li>Click <strong>Save</strong></li>
+        </ul>
+    </div>
+
+    <div class="success">
+        <h2>🎉 Your Site Will Be Live At:</h2>
+        <div class="url">https://YOUR-USERNAME.github.io/YOUR-REPO-NAME</div>
+        <p>Deployment takes 2-3 minutes. Check the Actions tab for progress.</p>
+    </div>
+
+    <h2>🆓 Other Free Options:</h2>
+    <ul>
+        <li><strong>Netlify:</strong> Drag & drop your folder to netlify.com/drop</li>
+        <li><strong>Vercel:</strong> Import from GitHub at vercel.com</li>
+        <li><strong>Firebase:</strong> Use Firebase CLI for deployment</li>
+        <li><strong>Surge:</strong> Simple CLI deployment with surge.sh</li>
+    </ul>
+
+    <p><a href="FREE_DEPLOYMENT_GUIDE.md">📖 Read the complete deployment guide</a></p>
+</body>
+</html>
