@@ -1,15 +1,15 @@
 title: Mishrak - Portfolio
-email: mishrak@example.com
+email: mishrak.dev@gmail.com
 description: >-
-  Professional portfolio showcasing projects, skills, and experience.
-  Full Stack Developer & Cloud Enthusiast.
-baseurl: ""
-url: "https://yourusername.github.io"
+  Professional portfolio showcasing cloud architecture and full-stack development projects.
+  Cloud Solutions Architect & Full Stack Developer.
+baseurl: "/portfolio"
+url: "https://k5hitij.github.io"
 
 # Social links
-github_username: yourusername
-linkedin_username: yourusername
-twitter_username: yourusername
+github_username: K5HITIJ
+linkedin_username: mishrak
+twitter_username: mishrak_dev
 
 # Build settings
 markdown: kramdown
