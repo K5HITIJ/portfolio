@@ -15,24 +15,39 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      
+
     - name: Setup Pages
       uses: actions/configure-pages@v4
-      
+
+    - name: Build site
+      run: |
+        # Create a clean build directory
+        mkdir -p _site
+        
+        # Copy all necessary files to _site
+        cp index.html _site/
+        cp -r assets _site/
+        
+        # Copy other HTML files if they exist
+        find . -name "*.html" -not -path "./_site/*" -not -path "./node_modules/*" -not -path "./.git/*" -exec cp {} _site/ \;
+        
+        # List contents for debugging
+        echo "Contents of _site directory:"
+        ls -la _site/
+
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: '.'
-        
+        path: ./_site
+
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
